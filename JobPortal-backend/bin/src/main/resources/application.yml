@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: job-portal-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/jobportal?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:tiger}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  jackson:
+    default-property-inclusion: non_null
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-super-secret-key-min-32-characters-long-please}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+  admin:
+    email: ${ADMIN_EMAIL:admin@jobportal.com}
+    password: ${ADMIN_PASSWORD:Admin@123}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
