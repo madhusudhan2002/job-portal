@@ -55,6 +55,7 @@ public class Job {
     @ElementCollection
     @CollectionTable(name = "job_skills", joinColumns = @JoinColumn(name = "job_id"))
     @Column(name = "skill")
+    @OrderColumn(name = "skill_order")  // <--- ADD THIS LINE
     @Builder.Default
     private List<String> skills = new ArrayList<>();
 
