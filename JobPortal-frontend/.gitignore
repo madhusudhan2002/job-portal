@@ -1,0 +1,12 @@
+# 1. Remove node_modules from Git (this won't delete it from your PC, just from GitHub)
+git rm -r --cached node_modules
+
+# 2. Add node_modules to a .gitignore file so it doesn't happen again
+echo "node_modules/" >> .gitignore
+
+# 3. Commit the changes
+git add .gitignore
+git commit -m "fix: remove node_modules from version control"
+
+# 4. Push to GitHub
+git push origin main
